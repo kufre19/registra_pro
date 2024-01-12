@@ -52,6 +52,18 @@
                             </div>
                         </div>
 
+                        <div class="col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label>{{ $t('password') }}</label>
+                                <app-input
+                                    :placeholder="$t('password')"
+                                    v-model="formData.password"
+                                    
+                                
+                                />
+                            </div>
+                        </div>
+
 <!--                        <div class="col-sm-12 col-md-12">-->
 <!--                            <div class="form-group">-->
 <!--                                <label>{{ $t('gender') }}</label>-->

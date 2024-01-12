@@ -105,14 +105,14 @@ class AppUserController extends BaseUserController
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users',
-            //"gender" => "required", //user->profile
             'roles' => ['nullable', 'array'],
         ]);
 
         $status = Status::findByNameAndType('status_active', 'user')->id;
 
         DB::transaction(function () use ($request, $status) {
-            $password = Str::random(8);
+            // $password = Str::random(8);
+            $password = $request->input('password');
 
             $newUser = $this->service
                 ->save(array_merge(

@@ -1,0 +1,1 @@
+<app-top-navbar @if(env('MARKET_PLACE_VERSION')) :market-place-version="{{env('MARKET_PLACE_VERSION')}}" @endif :config-data="{{json_encode(env('APP_URL').config('settings.application.company_logo'))}}"></app-top-navbar>

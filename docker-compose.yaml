@@ -1,0 +1,56 @@
+version: "3.1"
+services:
+  app:
+    image: registra_pro
+    container_name: registra_pro_php
+    build: 
+      context: .
+      dockerfile: .
+      args:
+          UID: "1000" # Replace with your host user's UID
+          GID: "1000" # Replace with your host user's GID
+    restart: "no"
+    ports:
+     
+      - 8000:8000
+    volumes:
+      - ./:/var/www/html
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - registra_pro
+
+    command: "php artisan serve --host=0.0.0.0 --port=8000"
+
+   
+
+  db:
+    image: mysql:latest
+    container_name: mysql_db_registra_pro
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - db_data_registra_pro:/docker-entrypoint-initdb.d
+      - db_data_registra_pro:/var/lib/mysql
+    networks:
+      - registra_pro
+   
+  
+  phpmyadmin:
+    image: phpmyadmin:5.2.0-apache
+    restart: "no"
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - registra_pro
+
+
+networks:
+  registra_pro:
+    driver: bridge
+
+
+volumes:
+  db_data_registra_pro:

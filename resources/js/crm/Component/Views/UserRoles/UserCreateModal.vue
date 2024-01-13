@@ -58,8 +58,6 @@
                                 <app-input
                                     :placeholder="$t('password')"
                                     v-model="formData.password"
-                                    
-                                
                                 />
                             </div>
                         </div>

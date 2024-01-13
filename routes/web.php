@@ -129,6 +129,11 @@ Route::get('link', function () {
 });
 
 
+Route::get('test', function()
+{
+    return "hello world";
+});
+
 //--------------------------------------------
 //Lead web form // access without login
 //--------------------------------------------

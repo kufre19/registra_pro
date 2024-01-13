@@ -113,6 +113,8 @@ class AppUserController extends BaseUserController
         DB::transaction(function () use ($request, $status) {
             // $password = Str::random(8);
             $password = $request->input('password');
+            
+            
 
             $newUser = $this->service
                 ->save(array_merge(

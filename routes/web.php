@@ -36,7 +36,7 @@ Route::get('/', function () {
 
 
 // Route to clear cache
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache-web', function() {
     $exitCode = Artisan::call('cache:clear');
     // Return a response to the browser
     return 'Cache cleared';

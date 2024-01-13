@@ -34,6 +34,14 @@ Route::get('/', function () {
     return redirect('admin/users/login');
 });
 
+Route::get('/link-storage', function () {
+    try {
+        Artisan::call('storage:link');
+        return 'The [public/storage] directory has been linked.';
+    } catch (Exception $e) {
+        return 'An error occurred: ' . $e->getMessage();
+    }
+});
 
 // Route to clear cache
 Route::get('/clear-cache-web', function() {

@@ -61,8 +61,10 @@ Vue.component('sidebar', require('./components/layouts/Sidebar').default);
 /**
  * v-calder
  * */
-import Calendar from 'v-calendar/lib/components/calendar.umd';
-import DatePicker from 'v-calendar/lib/components/date-picker.umd';
+
+import Calendar from 'v-calendar';
+import DatePicker from 'v-calendar';
+
 
 Vue.component('v-calendar', Calendar);
 Vue.component('v-date-picker', DatePicker);

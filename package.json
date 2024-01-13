@@ -85,7 +85,7 @@
         "moment": "^2.24.0",
         "nouislider": "^14.1.1",
         "query-string": "^6.13.6",
-        "v-calendar": "^2.1.1",
+        "v-calendar": "^2.4.2",
         "vue-chartjs": "^3.5.0",
         "vue-cookies": "^1.7.0",
         "vue-organization-chart": "^1.1.6",

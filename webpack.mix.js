@@ -45,6 +45,7 @@ mix.setPublicPath('public')
 // Extend Webpack configuration
 mix.webpackConfig({
     resolve: {
+        extensions: ['.js', '.json', '.vue'],
         alias: {
             '@app': path.resolve(__dirname, 'resources/js/crm/'),
             '@core': path.resolve(__dirname, 'resources/js/core/')

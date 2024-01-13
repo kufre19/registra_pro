@@ -63,6 +63,13 @@ Route::get('/clear-view', function() {
     return 'Compiled views cleared';
 });
 
+// Route to clear compiled views
+Route::get('/clear-optimize', function() {
+    $exitCode = Artisan::call('optimize:clear');
+    // Return a response to the browser
+    return 'Compiled views cleared';
+});
+
 
 // for documentation developer purpose
 

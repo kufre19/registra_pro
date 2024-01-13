@@ -1,5 +1,6 @@
-const mix = require("laravel-mix");
+const mix = require('laravel-mix');
 const path = require('path');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,41 +12,52 @@ const path = require('path');
  |
  */
 
-mix.setPublicPath("public")
-    .setResourceRoot("../") // Turns assets paths in css relative to css file
-    // .options({
-    //     processCssUrls: false,
-    // })
-    .sass("resources/sass/core/core.scss", "css/core.css")
-    .sass("node_modules/dropzone/src/dropzone.scss", "css/dropzone.css")
-    .sass("resources/sass/_global.scss", "css/fontawesome.css")
-    .js("resources/js/mainApp.js", "js/core.js").vue()
-    .extract([
-        // Extract packages from node_modules to vendor.js
-        "jquery",
-        "bootstrap",
-        "popper.js",
-        "axios",
-        "sweetalert2",
-        "lodash"
-    ])
-    .sourceMaps();
+mix.setPublicPath('public')
+   .setResourceRoot('../') // Turns assets paths in css relative to css file
+
+   // Compile SASS files
+   .sass('resources/sass/core/core.scss', 'css/core.css')
+   .sass('node_modules/dropzone/src/dropzone.scss', 'css/dropzone.css')
+   .sass('resources/sass/_global.scss', 'css/fontawesome.css')
+
+   // Compile JavaScript and Vue components
+   .js('resources/js/mainApp.js', 'js/core.js').vue({ version: 2 })
+
+   // Extract vendor libraries to a separate file
+   .extract([
+       'jquery',
+       'bootstrap',
+       'popper.js',
+       'axios',
+       'sweetalert2',
+       'lodash'
+   ])
+
+   // Versioning and source maps for production
+   .options({
+       processCssUrls: false,
+       terser: {
+           extractComments: false,
+       }
+   })
+   .sourceMaps();
+
+// Extend Webpack configuration
 mix.webpackConfig({
     resolve: {
         alias: {
-            "@app": path.resolve(__dirname, "resources/js/crm/"),
-            "@core": path.resolve(__dirname, "resources/js/core/")
+            '@app': path.resolve(__dirname, 'resources/js/crm/'),
+            '@core': path.resolve(__dirname, 'resources/js/core/')
         }
+    },
+    output: {
+        chunkFilename: 'js/[name].js?id=[chunkhash]', // for long-term caching
     }
 });
+
 if (mix.inProduction()) {
-    mix.version().options({
-        // Optimize JS minification process
-        terser: {}
-    });
+    mix.version();
 } else {
-    // Uses inline source-maps on development
-    mix.webpackConfig({
-        devtool: "inline-source-map",
-    });
+    // Enable source maps in development for better debugging
+    mix.sourceMaps(true, 'source-map');
 }

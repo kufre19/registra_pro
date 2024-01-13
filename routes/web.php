@@ -7,6 +7,8 @@ use App\Http\Controllers\InstallDemoDataController;
 use App\Http\Controllers\Setup\AppUpdateController;
 use App\Models\Core\Auth\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+
 
 /*
  * This is used to bypass the authentication
@@ -30,6 +32,35 @@ Route::get('/', function () {
     }
 
     return redirect('admin/users/login');
+});
+
+
+// Route to clear cache
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    // Return a response to the browser
+    return 'Cache cleared';
+});
+
+// Route to clear config cache
+Route::get('/clear-config', function() {
+    $exitCode = Artisan::call('config:clear');
+    // Return a response to the browser
+    return 'Config cache cleared';
+});
+
+// Route to clear route cache
+Route::get('/clear-route', function() {
+    $exitCode = Artisan::call('route:clear');
+    // Return a response to the browser
+    return 'Route cache cleared';
+});
+
+// Route to clear compiled views
+Route::get('/clear-view', function() {
+    $exitCode = Artisan::call('view:clear');
+    // Return a response to the browser
+    return 'Compiled views cleared';
 });
 
 

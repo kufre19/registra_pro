@@ -64,18 +64,6 @@
                             </div>
                         </div>
 
-<!--                        <div class="col-sm-12 col-md-12">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>{{ $t('gender') }}</label>-->
-<!--                                <app-input-->
-<!--                                    :label="$t('gender')"-->
-<!--                                    type="radio"-->
-<!--                                    :list="genders"-->
-<!--                                    v-model="formData.gender"-->
-<!--                                    :error-message="$errorMessage(errors, 'gender')"-->
-<!--                                />-->
-<!--                            </div>-->
-<!--                        </div>-->
 
                         <div class="col-sm-12 col-md-12">
                             <div class="form-group">

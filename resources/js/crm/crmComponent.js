@@ -559,6 +559,7 @@ Vue.component("app-common-all-deals",
     require("./Component/Helpers/ViewAllDealModal").default
 );
 
+
 Vue.component(
     "app-common-all-follower",
     require("./Component/Helpers/ViewAllFollowerModal").default

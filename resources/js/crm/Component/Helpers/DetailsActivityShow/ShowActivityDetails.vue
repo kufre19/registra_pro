@@ -140,9 +140,9 @@
                   </div>
                 </div>
                 <div v-if="activity.note" class="dropdown options-dropdown">
-                  <button class="btn-option btn" data-toggle="dropdown" type="button">
+                  <!-- <button class="btn-option btn" data-toggle="dropdown" type="button">
                     <app-icon name="more-vertical" />
-                  </button>
+                  </button> -->
                   <div class="dropdown-menu dropdown-menu-right py-2 mt-1 text-muted">
                     <a
                       class="dropdown-item font-size-80 px-4 py-2"

@@ -299,7 +299,7 @@ export default {
         {
           title: this.$t("last made note"),
           type: "component",
-          key: "comment",
+          key: "note",
           componentName: "person-comment-note-column",
         },
         {

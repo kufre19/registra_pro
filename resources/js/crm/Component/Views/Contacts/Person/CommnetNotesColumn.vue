@@ -1,6 +1,6 @@
 <template>
     <div>
-        <template >
+        <template v-if="lastCommentData.length > 0">
             <div class="d-flex align-items-center">
                 <span class="mb-1 badge badge-round badge-light">{{ rowData.notes }}</span>
             </div>
@@ -44,7 +44,9 @@ export default {
 
             // // Assuming the notes are already sorted by date, descending
             // return [this.value[0]]; // Take the first item only, which should be the latest note
-            // console.log(rowData);
+            console.log("show note logged data");
+            console.log(this.rowData);
+
            return  [{
             date: '2024-01-14', 
             note: 'This is the latest note',

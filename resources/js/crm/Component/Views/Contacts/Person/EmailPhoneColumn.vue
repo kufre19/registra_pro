@@ -53,6 +53,9 @@ export default {
     computed: {
         emailPhoneData() {
             let mailList = this.value.length ? collection(this.value).get("value", "type") : [];
+            console.log(this.value.length);
+
+            console.log(this.value);
             return mailList;
         }
     }

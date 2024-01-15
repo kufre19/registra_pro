@@ -2,7 +2,7 @@
     <div>
         <template v-if="lastCommentData.length > 0">
             <div class="d-flex align-items-center">
-                <span class="mb-1 badge badge-round badge-light">{{ rowData.notes[0].created_at }}</span>
+                <span class="mb-1 badge badge-round badge-light">{{ formatDateTime(rowData.notes[0].created_at) }}</span>
             </div>
         </template>
 
@@ -17,6 +17,7 @@ import {
     formatted_date,
     onlyTime,
     formatted_time,
+    formatDateTime,
 } from "@app/Helpers/helpers";
 export default {
     name: "CommentColumn",
@@ -43,6 +44,7 @@ export default {
             this.isViewModalOpen = false;
             $("#person-org-modal").modal("hide");
         },
+        formatDateTime,
     },
     computed: {
         lastCommentData() {

@@ -1,13 +1,9 @@
 <template>
     <div>
-        <template v-for="(item, index) in lastCommentData" >
+        <template >
             <div class="d-flex align-items-center">
-                <span class="mb-1 badge badge-round badge-light">{{ item.date }}</span>
-               
-                <br>
+                <span class="mb-1 badge badge-round badge-light">{{ rowData.notes }}</span>
             </div>
-
-          
         </template>
 
 
@@ -48,14 +44,11 @@ export default {
 
             // // Assuming the notes are already sorted by date, descending
             // return [this.value[0]]; // Take the first item only, which should be the latest note
-            let sample_data = [
-            {date: '2024-01-14'},
-            {date: '2024-01-14'},
-            {date: '2024-01-14'},
-            {date: '2024-01-14'}, 
-            {date: '2024-01-14'},
-        ]; 
-           return  collection(sample_data).get("date");
+            // console.log(rowData);
+           return  [{
+            date: '2024-01-14', 
+            note: 'This is the latest note',
+        }];
         }
     }
 }

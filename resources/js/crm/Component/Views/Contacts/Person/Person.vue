@@ -324,6 +324,12 @@ export default {
             option: ["today", "thisMonth", "last7Days", "thisYear"],
           },
           {
+            title: this.$t("note"),
+            type: "range-picker",
+            key: "date",
+            option: ["today", "thisMonth", "last7Days", "thisYear"],
+          },
+          {
             title: this.$t("owner"),
             type: "checkbox",
             key: "owner_is",

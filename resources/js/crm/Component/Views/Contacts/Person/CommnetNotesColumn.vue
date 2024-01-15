@@ -2,7 +2,7 @@
     <div>
         <template v-if="lastCommentData.length > 0">
             <div class="d-flex align-items-center">
-                <span class="mb-1 badge badge-round badge-light">{{ rowData.notes }}</span>
+                <span class="mb-1 badge badge-round badge-light">{{ rowData.notes[0].created_at }}</span>
             </div>
         </template>
 
@@ -12,6 +12,12 @@
 
 <script>
 import { collection } from "../../../../Helpers/helpers";
+import {
+    time_format,
+    formatted_date,
+    onlyTime,
+    formatted_time,
+} from "@app/Helpers/helpers";
 export default {
     name: "CommentColumn",
     props: {
@@ -47,6 +53,7 @@ export default {
             console.log("show note logged data");
             console.log(this.rowData);
 
+           
            return  [{
             date: '2024-01-14', 
             note: 'This is the latest note',

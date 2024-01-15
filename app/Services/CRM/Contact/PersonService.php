@@ -65,8 +65,9 @@ class PersonService extends ApplicationBaseService
                         ]);
                 },
                 'notes' => function ($q) {
-                    $q->select('id', 'note', 'noteable_id', 'created_at', 'title')
-                        ->orderBy('created_at', 'desc');
+                    $q->select('noteable_id','title', 'noteable_type','noteable_id','created_at')
+                      ->where('noteable_type', Person::class)
+                      ->latest('created_at');
                 },
                 'country', //should ensure isn't use from different method before remove
                 'profilePicture' //should ensure isn't use from different method before remove

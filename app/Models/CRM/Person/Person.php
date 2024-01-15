@@ -8,6 +8,7 @@ use App\Models\CRM\Contact\ContactType;
 use App\Models\CRM\Country\Country;
 use App\Models\CRM\Person\Traits\PersonRules;
 use App\Models\Core\Traits\DescriptionGeneratorTrait;
+use App\Models\CRM\Note\Note;
 use App\Models\CRM\Person\Traits\PersonsRelationship;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -71,7 +72,7 @@ class Person extends BaseModel
 
     public function scopePermission(Builder $builder)
     {
-        if (auth()->user()->roles[0]->name === 'Agent'){
+        if (auth()->user()->roles[0]->name === 'Agent') {
             $builder->where('owner_id', auth()->id());
         }
     }

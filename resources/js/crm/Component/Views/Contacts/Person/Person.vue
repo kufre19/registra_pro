@@ -297,6 +297,12 @@ export default {
           componentName: "tags-type-column",
         },
         {
+          title: this.$t("last made note"),
+          type: "component",
+          key: "comment",
+          componentName: "person-comment-note-column",
+        },
+        {
           title: this.$t("action"),
           type: "action",
           key: "invoice",

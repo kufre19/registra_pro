@@ -88,6 +88,12 @@ Vue.component(
     "person-email-phone-column",
     require("./Component/Views/Contacts/Person/EmailPhoneColumn").default
 );
+
+Vue.component(
+    "person-comment-note-column",
+    require("./Component/Views/Contacts/Person/CommnetNotesColumn").default
+);
+
 Vue.component(
     "all-email-phone",
     require("./Component/Views/Contacts/Person/ViewAllEmailPhoneModal").default
@@ -461,6 +467,9 @@ Vue.component(
 
 //DataTable tag view
 Vue.component('tags-type-column',
+    require("./Component/Helpers/DataTable/TagsTypeColumn").default);
+
+Vue.component('comments-type-column',
     require("./Component/Helpers/DataTable/TagsTypeColumn").default);
 
 Vue.component('tags-column',

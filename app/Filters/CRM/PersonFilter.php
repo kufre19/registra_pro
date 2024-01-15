@@ -12,6 +12,8 @@ use App\Filters\CRM\Traits\OwnerFilterTrait;
 use App\Filters\CRM\Traits\PhoneFilterTrait;
 use App\Filters\CRM\Traits\PublicAccessFilterTrait;
 use App\Filters\CRM\Traits\TagsFilterTrait;
+use App\Filters\CRM\Traits\CommentFilterTrait;
+
 use Illuminate\Database\Eloquent\Builder;
 
 class PersonFilter extends UserActivityFilter
@@ -23,7 +25,10 @@ class PersonFilter extends UserActivityFilter
         TagsFilterTrait,
         DateFilterTrait,
         PhoneFilterTrait,
-        NameFilterTrait;
+        NameFilterTrait,
+        CommentFilterTrait;
+        
+
 
     public function organization($ids = null)
     {

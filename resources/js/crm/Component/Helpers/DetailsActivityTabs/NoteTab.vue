@@ -3,11 +3,11 @@
     <form class="mb-0" ref="form" :data-url="this.props.noteSyncUrl">
       <div class="form-group">
         <div class="form-row">
-          <label class="mb-0 col-sm-2 d-flex align-items-center">{{
+          <!-- <label class="mb-0 col-sm-2 d-flex align-items-center">{{
             $t("title")
-          }}</label>
+          }}</label> -->
           <div class="col-sm-10">
-            <app-input type="text" :required="true" v-model="formData.title" />
+            <app-input type="hidden" :required="false" v-model="formData.title" :value="'new note'" />
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@
                     <app-icon :name="activity.icon" stroke-width="1" />
                   </div>
                   <div>
-                    <h6 v-if="activity.note">{{formatted_date(activity.created_at)  }}</h6>
+                    <h6 v-if="activity.note">{{formatDateTime(activity.created_at)  }}</h6>
                     <h6 v-else>{{ activity.title }}</h6>
                     <h6 v-if="activity.path">{{ activity.path.split("/").pop() }}</h6>
                     <div class="d-flex align-items-center font-size-70">
@@ -370,7 +370,7 @@ import {
   onlyTimeFromTime,
   textTruncate,
   urlGenerator,
-  formatted_date,
+  formatDateTime,
 } from "@app/Helpers/helpers";
 import ActivityMixin from "@app/Mixins/Global/ActivityMixin";
 import moment from "moment";
@@ -426,6 +426,7 @@ export default {
             return moment(time).utc(true)
                 .local().format(`${time_format()}`)
         },
+        formatDateTime,
     }
 };
 </script>

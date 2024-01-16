@@ -326,7 +326,7 @@ export default {
           {
             title: this.$t("note"),
             type: "range-picker",
-            key: "date",
+            key: "note",
             option: ["today", "thisMonth", "last7Days", "thisYear"],
           },
           {

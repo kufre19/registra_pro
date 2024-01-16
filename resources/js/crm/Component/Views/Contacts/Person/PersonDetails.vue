@@ -73,14 +73,6 @@
                         @update-request="updateRequest"
                     />
 
-<!--                    <component-->
-<!--                        is="app-details-deals"-->
-<!--                        :Deals="formData.deals"-->
-<!--                        :contact-list="peopleList"-->
-<!--                        :Id="formData.id"-->
-<!--                        component-type="person"-->
-<!--                        class="mb-primary"-->
-<!--                    />-->
 
                     <details-page-custom-field
                         v-if="dataLoaded && isComponent"
@@ -195,6 +187,14 @@ export default {
             // Tab Start
             todoActivityTab: [
                 {
+                    name: this.$t("note"),
+                    title: this.$t("note"),
+                    icon: "file-text",
+                    component: "common-note-tab",
+                    props: "",
+                    permission: "",
+                },
+                {
                     name: this.$t("activity"),
                     title: this.$t("activity"),
                     icon: "activity",
@@ -210,14 +210,7 @@ export default {
                     props: "",
                     permission: "",
                 },
-                {
-                    name: this.$t("note"),
-                    title: this.$t("note"),
-                    icon: "file-text",
-                    component: "common-note-tab",
-                    props: "",
-                    permission: "",
-                },
+                
             ],
 
             rowData: null,

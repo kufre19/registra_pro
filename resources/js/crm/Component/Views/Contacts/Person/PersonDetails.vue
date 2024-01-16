@@ -109,9 +109,9 @@
                     <app-common-activity-show
                         :Data="formData"
                         :edit-url="selectedUrl"
+                        :note-filter-url="route('person.get-note', { id: formData.id })"
                         :activity-filter-url="route('persons.view-activities', { id: formData.id })"
                         :file-filter-url="route('person.get-file', { id: formData.id })"
-                        :note-filter-url="route('person.get-note', { id: formData.id })"
                         :activity-status="activityStatusList"
                         component-type="person"
                         v-if="isComponent && activityStatusList.length"

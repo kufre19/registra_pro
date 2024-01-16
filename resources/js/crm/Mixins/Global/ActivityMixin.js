@@ -18,6 +18,11 @@ export default {
 
             activitiesFilter: [
                 {
+                    name: "Notes",
+                    key: 'note',
+                    translated_name: this.$t('notes'),
+                },
+                {
                     name: "Todo",
                     translated_name: this.$t('todo'),
                 },
@@ -34,12 +39,8 @@ export default {
                     name: "Files",
                     key: 'file',
                     translated_name: this.$t('files'),
-                },
-                {
-                    name: "Notes",
-                    key: 'note',
-                    translated_name: this.$t('notes'),
                 }
+               
             ],
         }
     },

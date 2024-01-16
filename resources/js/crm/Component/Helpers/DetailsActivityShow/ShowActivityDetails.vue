@@ -48,7 +48,8 @@
                     <app-icon :name="activity.icon" stroke-width="1" />
                   </div>
                   <div>
-                    <h6 v-if="activity.title">{{ activity.title }}</h6>
+                    <h6 v-if="activity.note">{{formatted_date(activity.created_at)  }}</h6>
+                    <h6 v-else>{{ activity.title }}</h6>
                     <h6 v-if="activity.path">{{ activity.path.split("/").pop() }}</h6>
                     <div class="d-flex align-items-center font-size-70">
                       <label
@@ -364,11 +365,12 @@
 import { FormMixin } from "@core/mixins/form/FormMixin.js";
 import {
   formatDateToLocal,
-    formatDateTimeToLocal,
+  formatDateTimeToLocal,
   onlyTime,
   onlyTimeFromTime,
   textTruncate,
   urlGenerator,
+  formatted_date,
 } from "@app/Helpers/helpers";
 import ActivityMixin from "@app/Mixins/Global/ActivityMixin";
 import moment from "moment";

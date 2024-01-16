@@ -102,6 +102,8 @@ export default {
                 .catch((error) => console.log(error));
         },
         filterActivities(url, key) {
+
+
             if (this.formData) {
                 this.preLoader = true;
                 this.value = key;
@@ -116,6 +118,7 @@ export default {
                     this.isfileNoteFilter = false;
                     this.axiosGet(`${this.noteFilterUrl}`).then((response) => {
                         this.activitiesList = response.data;
+                        // console.log(response.data);
                     }).finally(() => {
                         this.preLoader = false;
                     }).catch((error) => console.log(error));

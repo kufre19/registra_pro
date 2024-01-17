@@ -3,7 +3,7 @@
 namespace App\Filters\CRM\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
-
+use Illuminate\Support\Facades\DB;
 
 trait NoteFilterTrait
 {
@@ -30,17 +30,24 @@ trait NoteFilterTrait
         } else {
             $order = 'desc';
         }
-
+    
+        $subQuery = DB::table('notes')
+                       ->select('user_id')
+                       ->whereColumn('user_id', 'users.id') // 'users.id' should be the primary key of the user in the users table
+                       ->orderBy('created_at', $order)
+                       ->limit(1);
+    
         $data = $this->builder
-            ->whereHas('notes') // Ensure the user has notes
+            ->whereHas('notes', function ($query) use ($subQuery) {
+                $query->whereIn('user_id', $subQuery);
+            })
             ->with(['notes' => function ($query) use ($order) {
-                $query->orderBy('created_at', $order) // Order the notes by creation date
-                    ->limit(1) // Limit to only the latest or oldest note
-                    ->first(); // Get the first note based on the order
+                $query->orderBy('created_at', $order)->limit(1);
             }]);
-
+    
         return $data;
     }
+    
 
 
 

@@ -36,21 +36,26 @@ class PersonController extends Controller
                     ->select('id', 'name')
                     ->get();
             }
-            $order = Str::contains(\Request::get('orderBy'), ['asc', 'desc'])
-                ? \Request::get('orderBy')
-                : 'desc';
+            // $order = Str::contains(\Request::get('has_last_note'), ['asc', 'desc'])
+            //     ? \Request::get('orderBy')
+            //     : 'desc';
 
-                $ser = $this->service
-                ->showAll()
-                ->orderBy('updated_at', $order)
-                ->filters($this->filter)
-                ->paginate(
-                            request(
-                                'per_page',
-                                \Request::get('per_page') ?? 15
-                            )
-                );
-                // info($ser);
+            $orderBy =  \Request::get('has_last_note');
+            if ($orderBy != 'asc' && $orderBy != 'desc') {
+                $orderBy = 'desc';
+            }
+            
+
+            $ser = $this->service
+            ->showAll()
+            ->filters($this->filter)
+            ->orderBy('created_at', 'desc')
+            ->paginate(
+                request(
+                    'per_page',
+                    \Request::get('per_page') ?? 15
+                )
+            );
             return $ser;
            
         }

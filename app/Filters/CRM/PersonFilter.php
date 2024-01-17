@@ -27,8 +27,10 @@ class PersonFilter extends UserActivityFilter
         PhoneFilterTrait,
         NameFilterTrait,
         NoteFilterTrait;
-        
 
+
+
+  
 
     public function organization($ids = null)
     {
@@ -44,7 +46,7 @@ class PersonFilter extends UserActivityFilter
     public function search($search = null)
     {
         return $this->builder->when($search, function (Builder $builder) use ($search) {
-            $builder->where(function (Builder $builder) use ($search){
+            $builder->where(function (Builder $builder) use ($search) {
                 $builder->where('name', 'LIKE', "%$search%")
                     ->orWhere('address', 'LIKE', "%{$search}%");
             });

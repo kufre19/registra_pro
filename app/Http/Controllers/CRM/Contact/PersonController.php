@@ -49,7 +49,7 @@ class PersonController extends Controller
             $ser = $this->service
             ->showAll()
             ->filters($this->filter)
-            ->orderBy('created_at', 'desc')
+            // ->orderBy('created_at', 'desc')
             ->paginate(
                 request(
                     'per_page',

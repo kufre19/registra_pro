@@ -71,7 +71,7 @@ export default {
         this.formData = this.Data;
         this.collaboratorParticipant();
         this.updateActivity();
-        this.filterActivities(this.activityFilterUrl, `status=${this.todoStatusId.id}`);
+        this.filterActivities(this.activityFilterUrl, 'note');
     },
     methods: {
         updateActivity() {

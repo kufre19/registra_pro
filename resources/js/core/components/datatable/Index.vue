@@ -291,6 +291,8 @@ export default {
          * @param active
          * */
         getAction(rowData, actionObj, active) {
+           
+
             this.$emit("action", rowData, actionObj, active);
         },
 

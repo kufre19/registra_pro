@@ -328,11 +328,10 @@ export default {
             type: "drop-down-filter", 
             key: "notes",
             option: [
-              { value: "oldest", text: this.$t("oldest") }, 
-              { value: "newest", text: this.$t("newest") }
+              { value: "oldest", id: this.$t("oldest") }, 
+              { value: "newest", id: this.$t("newest") }
             ],
             default: "newest",
-            active: null
           },
           {
             title: this.$t("owner"),

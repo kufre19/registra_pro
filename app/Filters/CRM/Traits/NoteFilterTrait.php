@@ -18,24 +18,31 @@ trait NoteFilterTrait
             return $query->whereHas('notes', function (Builder $query) use ($comments) {
                 $query->whereIn('id', $comments);
             })->with(['notes' => function ($query) {
-                    $query->latest()->first();
-                }]);
+                $query->latest()->first();
+            }]);
         });
     }
 
     public function hasLastNote($order = 'desc')
     {
-        if($order == "oldest")
-        {
+        if ($order == "oldest") {
             $order = 'asc';
-        }else{
+        } else {
             $order = 'desc';
         }
-        $data = $this->builder->with(['notes' => function ($query) use ($order) {
-            $query->orderBy('created_at', $order)->first(); // 'asc' for oldest, 'desc' for newest
-        }]);
+
+        $data = $this->builder
+            ->whereHas('notes') // Ensure the user has notes
+            ->with(['notes' => function ($query) use ($order) {
+                $query->orderBy('created_at', $order) // Order the notes by creation date
+                    ->limit(1) // Limit to only the latest or oldest note
+                    ->first(); // Get the first note based on the order
+            }]);
+
         return $data;
     }
+
+
 
     public function fetch_note_by_order($orderBy)
     {

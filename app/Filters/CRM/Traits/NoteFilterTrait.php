@@ -31,14 +31,19 @@ trait NoteFilterTrait
             $order = 'desc';
         }
 
-        $data = $this->builder
-            ->whereHas('notes') // Ensure the user has notes
-            ->with(['notes' => function ($query) use ($order) {
-                $query->orderBy('created_at', $order) // Order the notes by creation date
-                   ;
+        // $data = $this->builder
+        //     ->whereHas('notes') // Ensure the user has notes
+        //     ->with(['notes' => function ($query) use ($order) {
+        //         $query->orderBy('created_at', $order) // Order the notes by creation date
+        //            ;
                   
-            }]);
+        //     }]);
 
+            $data =  $this->builder->when($order, function (Builder $query) use ($order) {
+                return $query->whereHas('notes', function (Builder $query) use ($order) {
+                    $query->orderBy('created_at', $order);
+                });
+            });
         return $data;
     }
 

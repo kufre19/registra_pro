@@ -29,7 +29,6 @@ class PersonController extends Controller
     }
         public function index()
         {
-            info(\Request::all());
             if (\Request::exists('all')) {
                 return $this->service
                     ->with(['organizations'])
@@ -41,16 +40,19 @@ class PersonController extends Controller
                 ? \Request::get('orderBy')
                 : 'desc';
 
-            return $this->service
+                $ser = $this->service
                 ->showAll()
                 ->orderBy('updated_at', $order)
                 ->filters($this->filter)
                 ->paginate(
-                    request(
-                        'per_page',
-                        \Request::get('per_page') ?? 15
-                    )
+                            request(
+                                'per_page',
+                                \Request::get('per_page') ?? 15
+                            )
                 );
+                // info($ser);
+            return $ser;
+           
         }
 
     public function store(Request $request)

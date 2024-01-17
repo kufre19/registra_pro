@@ -5,7 +5,7 @@ namespace App\Filters\CRM\Traits;
 use Illuminate\Database\Eloquent\Builder;
 
 
-trait CommentFilterTrait
+trait NoteFilterTrait
 {
 
 
@@ -21,6 +21,20 @@ trait CommentFilterTrait
                     $query->latest()->first();
                 }]);
         });
+    }
+
+    public function hasLastNote($order = 'desc')
+    {
+        if($order == "oldest")
+        {
+            $order = 'asc';
+        }else{
+            $order = 'desc';
+        }
+        $data = $this->builder->with(['notes' => function ($query) use ($order) {
+            $query->orderBy('created_at', $order)->first(); // 'asc' for oldest, 'desc' for newest
+        }]);
+        return $data;
     }
 
     public function fetch_note_by_order($orderBy)

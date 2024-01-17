@@ -326,7 +326,7 @@ export default {
           {
             title: this.$t("note"),
             type: "drop-down-filter", 
-            key: "notes",
+            key: "has_last_note",
             option: [
               { value: "oldest", id: this.$t("oldest") }, 
               { value: "newest", id: this.$t("newest") }

@@ -325,9 +325,14 @@ export default {
           },
           {
             title: this.$t("note"),
-            type: "range-picker",
-            key: "note",
-            option: ["today", "thisMonth", "last7Days", "thisYear"],
+            type: "drop-down-filter", 
+            key: "notes",
+            option: [
+              { value: "oldest", text: this.$t("oldest") }, 
+              { value: "newest", text: this.$t("newest") }
+            ],
+            default: "newest",
+            active: null
           },
           {
             title: this.$t("owner"),

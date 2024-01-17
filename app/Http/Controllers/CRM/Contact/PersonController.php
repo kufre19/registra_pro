@@ -29,6 +29,7 @@ class PersonController extends Controller
     }
         public function index()
         {
+            info(\Request::all());
             if (\Request::exists('all')) {
                 return $this->service
                     ->with(['organizations'])

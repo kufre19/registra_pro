@@ -385,3 +385,30 @@ export const phoneNumber = {
         this.$store.dispatch('getPhoneNumber')
     }
 }
+
+// Notes Order Filter
+export const Note = {
+    computed: {
+        note() {
+            return this.$store.getters.getNote.map(note => {
+                return {
+                    id: note.id,
+                    value: note.created_at
+                }
+            })
+        }
+    },
+    watch: {
+        'note.length': {
+            handler: function (length) {
+                this.options.filters.find(({key, option}) => {
+                    if (key === 'notes') option.push(...this.phone)
+                })
+            },
+            immediate: true
+        }
+    },
+    mounted() {
+        this.$store.dispatch('getNote')
+    }
+};

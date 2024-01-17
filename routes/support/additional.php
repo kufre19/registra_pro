@@ -13,6 +13,7 @@ use App\Http\Controllers\CRM\Setting\EmailDeliveryCheckController;
 use App\Http\Controllers\CRM\Stage\DefaultStageController;
 use App\Http\Controllers\CRM\Tags\TagController;
 use App\Http\Controllers\CRM\AdditionalController;
+use App\Http\Controllers\CRM\Contact\NoteController;
 use App\Http\Controllers\CRM\User\AppPermissionController;
 use App\Http\Controllers\CRM\User\AppUserController;
 use App\Http\Controllers\CRM\Setting\SettingsController;
@@ -191,6 +192,8 @@ Route::put(
 Route::resource('activity_types', ActivityTypeController::class);
 
 Route::get('phones', [PhoneController::class, 'index'])->name('phone_list');
+Route::get('getnotes', [NoteController::class, 'index'])->name('note_list');
+
 
 Route::get('getPhones', [PhoneController::class, 'searchPhoneLists'])
     ->name('phone_list_search');

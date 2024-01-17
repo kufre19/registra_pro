@@ -17,6 +17,7 @@ import Deal from './modules/Deal/deals';
 import Notification from './modules/Setting/notification';
 import CheckEmailSetting from './modules/Setting/checkEmailDeliverySetting';
 import PhoneNumber from './modules/Phone/phones';
+import Note from './modules/Note/notes';
 import Language from './modules/Language/language';
 import {formatted_date, formatted_time} from "../Helpers/helpers";
 
@@ -58,6 +59,7 @@ export default new Vuex.Store({
         Notification,
         CheckEmailSetting,
         PhoneNumber,
+        Note,
         Language
     }
 });

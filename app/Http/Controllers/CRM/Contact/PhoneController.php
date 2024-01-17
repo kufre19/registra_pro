@@ -16,6 +16,7 @@ class PhoneController extends Controller
 
     public function searchPhoneLists(Request $request)
     {
+        
         return Phone::query()
         ->where('value', 'like', '%'.$request->phone.'%')
         ->select('id', 'value')

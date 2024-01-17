@@ -16,6 +16,8 @@ const mutations = {
 const actions = {
     getPhoneNumber({commit}) {
         axiosGet(route('phone_list')).then(({data}) => {
+            console.log(data);
+
             commit('PHONE_INFO', data)
         }).catch((error) => console.log(error))
     }

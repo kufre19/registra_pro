@@ -25,28 +25,27 @@ trait NoteFilterTrait
 
     public function hasLastNote($order = 'desc')
     {
-        if ($order == "oldest") {
-            $order = 'asc';
-        } else {
-            $order = 'desc';
-        }
+        // Define the order based on the input.
+        $order = $order == "oldest" ? 'asc' : 'desc';
     
-        $subQuery = DB::table('notes')
-                       ->select('user_id')
-                       ->whereColumn('user_id', 'users.id') // 'users.id' should be the primary key of the user in the users table
-                       ->orderBy('created_at', $order)
-                       ->limit(1);
+        // Create a subquery that gets the latest or oldest note for each user.
+        $notesSubQuery = DB::table('notes')
+            ->selectRaw('noteable_id, MAX(created_at) as latest_note_date')
+            ->groupBy('noteable_id');
     
+        // Join this subquery with the main query.
         $data = $this->builder
-            ->whereHas('notes', function ($query) use ($subQuery) {
-                $query->whereIn('user_id', $subQuery);
+            ->joinSub($notesSubQuery, 'note_sub', function ($join) {
+                $join->on('people.id', '=', 'note_sub.noteable_id');
             })
             ->with(['notes' => function ($query) use ($order) {
-                $query->orderBy('created_at', $order)->limit(1);
-            }]);
+                $query->orderBy('created_at', $order)->take(1);
+            }])
+            ->select('people.*', 'note_sub.latest_note_date');
     
         return $data;
     }
+    
     
 
 

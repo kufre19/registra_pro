@@ -28,9 +28,9 @@ trait NoteFilterTrait
     {
         if($orderBy == "oldest")
         {
-            $orderBy = "desc";
-        }else{
             $orderBy = "asc";
+        }else{
+            $orderBy = "desc";
         }
 
         // Add a raw subquery for the latest notes

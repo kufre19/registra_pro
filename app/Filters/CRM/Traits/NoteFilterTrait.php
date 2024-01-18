@@ -29,10 +29,10 @@ trait NoteFilterTrait
         if($orderBy == "oldest")
         {
             $orderBy = "asc";
-            $db_query = DB::raw('MIN(created_at) as last_note_created_at');
+            $db_query = DB::raw('created_at as last_note_created_at');
         }else{
             $orderBy = "desc";
-            $db_query = DB::raw('MAX(created_at) as last_note_created_at');
+            $db_query = DB::raw('created_at as last_note_created_at');
 
         }
 

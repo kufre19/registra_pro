@@ -36,6 +36,7 @@ class PersonController extends Controller
                     ->select('id', 'name')
                     ->get();
             }
+
             // $order = Str::contains(\Request::get('has_last_note'), ['asc', 'desc'])
             //     ? \Request::get('orderBy')
             //     : 'desc';

@@ -70,8 +70,11 @@ export const TableMixin = {
         },
         filterByOptions() {
             return this.options.sortByFilter?.isVisible === true ? this.options.sortByFilter : null
+         
+
         },
         filterByValue() {
+          
             return this.filteredBy ? this.filteredBy : (this.filterByOptions?.options.length ? this.filterByOptions.options[0] : '')
         },
         requestParams() {

@@ -624,12 +624,14 @@ export default {
             filter.orderBy = this.orderBy;
             filter.sortBy = this.sortByKey;
 
+
             if (!this.isUndefined(this.options.cardViewQueryParams) && this.cardView)
                 filter = {...filter, ...this.options.cardViewQueryParams}
             if (this.filterByOptions)
                 filter[this.filterByOptions.key ? this.filterByOptions.key : 'filterBy'] = this.filterByValue
 
             reqData.params = filter;
+            console.log(reqData);
 
             this.setPreloader(true);
 
@@ -643,6 +645,9 @@ export default {
                 else this.configureTableForLoadMore(response.data);
 
                 this.totalRow = response.data.total;
+                console.log(response.data);
+
+
                 this.dataOffset = this.dataSet.length;
 
                 // For Bulk options and row selection
@@ -666,6 +671,7 @@ export default {
                 // Send error in root
                 if (this.isFunction(this.options.afterRequestError))
                     this.options.afterRequestError(response);
+                
             }).finally(() => {
                 this.actionTriggered = false;
                 this.setPreloader(false);

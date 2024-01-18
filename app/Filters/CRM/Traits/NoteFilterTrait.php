@@ -38,7 +38,7 @@ trait NoteFilterTrait
 
         // Add a raw subquery for the latest notes
         $latestNotesSubquery = DB::table('notes')
-            ->select('noteable_id', $db_query )
+            ->select('noteable_id' )
             ->where('noteable_type', Person::class)
             ->groupBy('noteable_id');
 

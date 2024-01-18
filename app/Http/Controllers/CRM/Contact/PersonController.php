@@ -45,6 +45,28 @@ class PersonController extends Controller
             if ($orderBy != 'asc' && $orderBy != 'desc') {
                 $orderBy = 'desc';
             }
+            if (\Request::exists('has_last_note')) {
+
+                $orderBy =  \Request::get('has_last_note');
+                if($orderBy == "oldest")
+                {
+                    $orderBy = "asc";
+                }else{
+                    $orderBy = "desc";
+                }
+
+                $ser = $this->service
+                ->showAll($orderBy)
+                ->filters($this->filter)
+                // ->orderBy('created_at', 'desc')
+                ->paginate(
+                    request(
+                        'per_page',
+                        \Request::get('per_page') ?? 15
+                    )
+                );
+                return $ser;
+            }
             
 
             $ser = $this->service

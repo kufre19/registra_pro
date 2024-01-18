@@ -48,6 +48,14 @@ trait NoteFilterTrait
         })
         ->orderBy('last_note_created_at', $orderBy);
 
+                // Log the SQL query
+        // $sql = $this->builder->toSql();
+        // info("The query to be executed: " . $sql);
+
+        // // If you want to log the bindings as well
+        // $bindings = $this->builder->getBindings();
+        // info("The query bindings: ", $bindings); 
+
         
         // // Log the SQL query
         // $sql = $this->builder->toSql();

@@ -29,13 +29,16 @@ trait NoteFilterTrait
         if($orderBy == "oldest")
         {
             $orderBy = "asc";
+            $db_query = DB::raw('MIN(created_at) as last_note_created_at');
         }else{
             $orderBy = "desc";
+            $db_query = DB::raw('MAX(created_at) as last_note_created_at');
+
         }
 
         // Add a raw subquery for the latest notes
         $latestNotesSubquery = DB::table('notes')
-            ->select('noteable_id', DB::raw('MAX(created_at) as last_note_created_at'))
+            ->select('noteable_id', $db_query )
             ->where('noteable_type', Person::class)
             ->groupBy('noteable_id');
 

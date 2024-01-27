@@ -6,9 +6,17 @@
             </div>
         </template>
 
+        <!-- <template v-if="rowData.notes[0]?.created_at">
+            <div class="d-flex align-items-center">
+                <span class="mb-1 badge badge-round badge-light">{{ formatDateTime(rowData.notes[0]?.created_at) }}</span>
+            </div>
+        </template> -->
+
 
     </div>
 </template>
+
+
 
 <script>
 import { collection } from "../../../../Helpers/helpers";

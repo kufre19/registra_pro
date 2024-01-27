@@ -5,6 +5,7 @@ use App\Http\Middleware\PermissionMiddleware;
 use App\Http\Controllers\Core\LanguageController;
 use App\Http\Controllers\InstallDemoDataController;
 use App\Http\Controllers\Setup\AppUpdateController;
+use Illuminate\Support\Facades\DB;
 use App\Models\Core\Auth\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -178,6 +179,18 @@ Route::get('link', function () {
 Route::get('test', function()
 {
     return "hello world";
+});
+
+Route::get('/truncate/{table}', function ($table) {
+    try {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table($table)->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        return "Table {$table} truncated successfully.";
+    } catch (\Exception $e) {
+        return "Error truncating table: " . $e->getMessage();
+    }
 });
 
 //--------------------------------------------

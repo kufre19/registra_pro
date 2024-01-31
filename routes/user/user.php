@@ -16,8 +16,8 @@ Route::post('password-reset', [ PasswordResetController::class, 'store' ])
     ->name('password-reset.store');
 
 Route::get('reset-password', [ PasswordResetController::class, 'show' ])
-    ->name('reset-password.index');
-    // ->middleware('signed');
+    ->name('reset-password.index')
+    ->middleware('signed');
 
 Route::post('reset-password', [PasswordResetController::class, 'update'])
     ->name('reset-password.store');

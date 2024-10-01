@@ -48,7 +48,8 @@ class PersonFilter extends UserActivityFilter
         return $this->builder->when($search, function (Builder $builder) use ($search) {
             $builder->where(function (Builder $builder) use ($search) {
                 $builder->where('name', 'LIKE', "%$search%")
-                    ->orWhere('address', 'LIKE', "%{$search}%");
+                    ->orWhere('address', 'LIKE', "%{$search}%")
+                    ->orWhere('phone', 'LIKE', "%{$search}%");
             });
         });
     }

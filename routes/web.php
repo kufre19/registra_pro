@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Artisan;
 //========================================================
 //should remove before pull request
 //========================================================
-//\Illuminate\Support\Facades\Auth::loginUsingId(1);
+// \Illuminate\Support\Facades\Auth::loginUsingId(1);
 
 Route::get('/', function () {
     if (auth()->check()) {
